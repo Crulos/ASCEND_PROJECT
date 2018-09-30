@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Ascend Exemple</title>
+    
+    <script src="/jquery.js"></script>
+    <script src="/pagination.js"></script>
+
+
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+
+
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+    <div th:if="${not #lists.isEmpty(products)}">
+        <h2>Member List</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Frist Name</th>
+                <th>LastName</th>
+                <th>View</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="product : ${products}">
+                <td th:text="${product.id}"><a href="/product/${product.id}">Id</a></td>
+                 <td th:text="${product.title_id}">title_id</td>
+                <td th:text="${product.name}">Name</td>
+                <td th:text="${product.last_name}">LastName</td>
+                <td><a th:href="${ '/product/' + product.id}">View</a></td>
+                <td><a th:href="${'/product/edit/' + product.id}">Edit</a></td>
+                <td><a th:href="${'/product/delete/' + product.id}">Delete</a></td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+</body>
+
+</html>
+
